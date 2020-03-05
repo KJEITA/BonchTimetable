@@ -2,7 +2,6 @@
     <string name="app_name">BonchApp</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <string name="navgut_loading_error">Произошла ошибка загрузки. Нажмите в любом месте, чтобы попробовать снова</string>
     <string name="reg_success">Registration Success</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -95,34 +94,6 @@
     </string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="action_settings">Settings</string>
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <string name="search_files">Поиск по автору или названию</string>
-
-    <string-array name="Months">
-        <item>ЯНВАРЬ</item>
-        <item>ФЕВРАЛЬ</item>
-        <item>МАРТ</item>
-
-        <item>АПРЕЛЬ</item>
-        <item>МАЙ</item>
-        <item>ИЮНЬ</item>
-
-        <item>ИЮЛЬ</item>
-        <item>АВГУСТ</item>
-        <item>СЕНТЯБРЬ</item>
-
-        <item>ОКТЯБРЬ</item>
-        <item>НОЯБРЬ</item>
-        <item>ДЕКАБРЬ</item>
-    </string-array>
-    
-    <string-array name="switch_files">
-        <item>Мои файлы</item>
-        <item>Файлы группы</item>
-        <item>Библиотека СПбГУТ</item>
-        <item>bonchfiles</item>
-    </string-array>
 </resources>
