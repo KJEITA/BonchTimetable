@@ -96,6 +96,12 @@
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="action_settings">Settings</string>
     <string name="search_files">Поиск по автору или названию</string>
+    <string name="add_to_my_files">Добавить в \"Мои файлы\"</string>
+    <string name="delete_from_my_file">Удалить из \"Мои файлы\"</string>
+    <string name="my_file_btn_text">Мои файлы</string>
+    <string name="group_file_btn_text">Файлы группы</string>
+    <string name="lib_file_btn_text">Библиотека СПбГУТ</string>
+    <string name="bonch_file_btn_text">bonchfiles</string>
 
     <string-array name="switсhTimetable">
         <item>Выбор группы</item>

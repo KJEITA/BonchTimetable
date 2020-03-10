@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/item_image"
+            android:id="@+id/item_file_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="16dp"
@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/item_title"
+            android:id="@+id/item_file_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="9dp"
@@ -33,20 +33,21 @@
             android:textColor="#000"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@id/item_image"
-            app:layout_constraintTop_toTopOf="@id/item_image" />
+            app:layout_constraintLeft_toRightOf="@id/item_file_image"
+            app:layout_constraintTop_toTopOf="@id/item_file_image" />
 
         <TextView
-            android:id="@+id/item_author"
+            android:id="@+id/item_file_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="9dp"
             android:text="test"
             android:textColor="#000"
-            app:layout_constraintLeft_toRightOf="@id/item_image"
-            app:layout_constraintTop_toBottomOf="@id/item_title" />
+            app:layout_constraintLeft_toRightOf="@id/item_file_image"
+            app:layout_constraintTop_toBottomOf="@id/item_file_title" />
 
         <ImageView
+            android:id="@+id/item_file_download"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="12dp"
