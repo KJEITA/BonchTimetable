@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bonchapp.coordinator.MainCoordinator
 import com.example.bonchapp.model.repository.TestRep
 import com.example.bonchapp.ui.event.main.EventAdapter
-import com.example.bonchapp.ui.event.FullEventFragment
 import com.example.bonchapp.ui.event.main.MainEventFragment
 
 class EventPresenter(val context: MainEventFragment) {
@@ -17,12 +16,10 @@ class EventPresenter(val context: MainEventFragment) {
     var testData: LiveData<ArrayList<String>> = _testData
 
     fun onItemClick(pos: Int) {
-        //MainCoordinator.navigateToFullEvent(context, pos)
-        context.activity!!.supportFragmentManager.beginTransaction().add(FullEventFragment(), null)
-            .commit()
+        MainCoordinator.navigateToFullEvent(context, pos)
     }
 
-    fun setDataFromApi() {
+    fun onViewCreate() {
         TestRep.getGroups(_testData)
     }
 

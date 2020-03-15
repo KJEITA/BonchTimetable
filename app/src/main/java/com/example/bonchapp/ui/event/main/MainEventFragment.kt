@@ -27,7 +27,7 @@ class MainEventFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        presenter.setDataFromApi()
+        presenter.onViewCreate()
         initRecycler()
         initSearch()
         initFab()
