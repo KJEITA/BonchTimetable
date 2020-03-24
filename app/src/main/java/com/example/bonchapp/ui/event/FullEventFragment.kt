@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.bonchapp.R
 import com.example.bonchapp.presenter.FullEventPresenter
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_full_event.*
 
 
-class FullEventFragment : Fragment() {
+class FullEventFragment : BottomSheetDialogFragment() {
 
     val presenter = FullEventPresenter(this)
 

@@ -17,6 +17,7 @@ import com.example.bonchapp.ui.adapters.SelectGroupAdapter
 import com.example.bonchapp.ui.adapters.TimetableAdapter
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener
+import kotlinx.android.synthetic.main.fragment_timetable.view.*
 
 lateinit var mPresenter: PresenterTimeTable
 
@@ -50,6 +51,8 @@ class TimetableFragment : Fragment(), MainContract.View {
 
     override fun showGroupsList(list: List<String>) {
         selectGroupFragment.groupsListAdapter.setGroups(list)
+        selectGroupFragment.arrSubjects = list
+
     }
 
     override fun showSwitchProfessorFragment() {
@@ -75,10 +78,20 @@ class TimetableFragment : Fragment(), MainContract.View {
     private fun initCalender(view: View) {
         val calendar = view.findViewById<MaterialCalendarView>(R.id.calendar)
         calendar.setTopbarVisible(false)
+
+        val textMonth = view.findViewById<TextView>(R.id.month)
+
         calendar.setOnDateChangedListener(OnDateSelectedListener { widget, date, selected ->
             val s: String = "${date.year}-${date.month}-${date.day}"
             mPresenter.updateTimetable(s)
         })
+
+        textMonth.text = resources.getStringArray(R.array.Months)[calendar.currentDate.month-1]
+
+        calendar.setOnMonthChangedListener { widget, date ->
+            textMonth.text = resources.getStringArray(R.array.Months)[calendar.currentDate.month-1]
+        }
+
     }
 
     private fun initSwitchTimetable(view: View) {

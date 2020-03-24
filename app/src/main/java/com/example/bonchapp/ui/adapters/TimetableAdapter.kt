@@ -58,9 +58,14 @@ class TimetablePostHolder(itemView: View, fragment: Fragment) : RecyclerView.Vie
         textProfessor.text = subject.tutor
         //textCabinet.text = subject.place
 
-        val content = SpannableString(subject.place)
-        content.setSpan(UnderlineSpan(), 0, content.length, 0)
-        textCabinet.setText(content)
+        if (subject.place != null) {
+            val content = SpannableString(subject.place)
+            content.setSpan(UnderlineSpan(), 0, content.length, 0)
+            textCabinet.setText(content)
+        }
+        else
+            textCabinet.setText("")
+
 
         textCabinet.setOnClickListener {
             MainCoordinator.showCabinetInNavigator(fragment, stringer(subject.place))

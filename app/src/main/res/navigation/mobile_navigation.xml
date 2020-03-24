@@ -12,6 +12,10 @@
         <action
             android:id="@+id/action_navigation_event_to_fullEventFragment"
             app:destination="@id/fullEventFragment"/>
+        <action
+            android:id="@+id/action_navigation_event_to_addEvent"
+            app:destination="@id/addEvent"
+            app:popUpTo="@id/navigation_event" />
     </fragment>
 
     <fragment
@@ -43,4 +47,9 @@
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>
+    <fragment
+        android:id="@+id/addEvent"
+        android:name="com.example.bonchapp.ui.event.AddEvent"
+        android:label="fragment_add_event"
+        tools:layout="@layout/fragment_add_event" />
 </navigation>

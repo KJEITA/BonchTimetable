@@ -25,14 +25,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_select_group"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="15dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/btn_outline"
             android:stateListAnimator="@null"
             android:text="Выбор группы"
@@ -41,8 +40,7 @@
             android:textSize="14dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_select_tutor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/groupName" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_select_tutor"
