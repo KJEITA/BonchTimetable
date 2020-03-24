@@ -35,17 +35,7 @@ class StorageFragment : Fragment() {
     private lateinit var libFileBtn: Button
     private lateinit var bonchFileBtn: Button
 
-    private val touchListener = object: View.OnTouchListener {
-        override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-            if (event!!.actionIndex >= 0 && filesDropdownList.visibility == View.VISIBLE) {
-                filesDropdownList.visibility = View.GONE
-            }
-            return true
-        }
-
-    }
-
-    private lateinit var recyclerAdapter: FilesAdapter
+    lateinit var recyclerAdapter: FilesAdapter
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
@@ -54,7 +44,7 @@ class StorageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_storage, container, false)
-        root.setOnTouchListener(touchListener)
+
         initView(root)
         setClickers()
 
@@ -87,13 +77,12 @@ class StorageFragment : Fragment() {
 
 
     fun initRecycler() {
-        recyclerAdapter = FilesAdapter(this, presenter.data)
+        recyclerAdapter = FilesAdapter(this)
         filesRecycler.layoutManager = LinearLayoutManager(this.context!!)
         filesRecycler.adapter = recyclerAdapter
     }
 
-    fun updateAdapter(newData: MutableList<String>) {
-        recyclerAdapter.data = newData
+    fun updateAdapter() {
         filesRecycler.adapter!!.notifyDataSetChanged()
     }
 

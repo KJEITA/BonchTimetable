@@ -1,25 +1,30 @@
 package com.example.bonchapp.presenter
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.bonchapp.R
+import com.example.bonchapp.model.pojo.File
 import com.example.bonchapp.ui.storage.StorageFragment
 import kotlinx.android.synthetic.main.fragment_storage.view.*
 
 class StoragePresenter(val context: StorageFragment) {
 
-    var data = mutableListOf("Мой Файл 1", "Мой Файл 2", "Мой Файл 3", "Мой Файл 4", "Мой Файл 5", "Мой Файл 6", "Мой Файл 7")
+    private val testData = MutableLiveData<ArrayList<File>>()
+
+    var filesList: LiveData<ArrayList<File>> = testData
 
     fun onCreate() {
-
+        testData.value = arrayListOf()
     }
 
     fun onSpinnerSelectedItemUpdated(itemPosition: Int) {
         when (itemPosition) {
-            R.id.my_file_btn -> data = mutableListOf("Мой Файл 1", "Мой Файл 2", "Мой Файл 3", "Мой Файл 4", "Мой Файл 5", "Мой Файл 6", "Мой Файл 7")
-            R.id.group_file_btn -> data = mutableListOf("Файл группы 1", "Файл группы 2", "Файл группы 3", "Файл группы 4", "Файл группы 5", "Файл группы 6", "Файл группы 7")
-            R.id.lib_file_btn -> data = mutableListOf("Файл библиотека 1", "Файл библиотека 2", "Файл библиотека 3", "Файл библиотека 4", "Файл библиотека 5", "Файл библиотека 6", "Файл библиотека 7")
-            R.id.bonch_file_btn -> data = mutableListOf("bonchfile 1", "bonchfile 2", "bonchfile 3", "bonchfile 4", "bonchfile 5", "bonchfile 6", "bonchfile 7")
+            R.id.my_file_btn -> testData.value!!.clear()
+            R.id.group_file_btn -> testData.value = arrayListOf(File("Файл группы1", "Автор1"), File("Файл группы2", "Автор2"))
+            R.id.lib_file_btn -> testData.value = arrayListOf(File("Файл библиотека 1", "Автор"), File("Файл библиотека 3", "Автор2"))
+            R.id.bonch_file_btn -> testData.value = arrayListOf(File("bonchfile 1", "bonchfile 2"))
         }
-        context.updateAdapter(data)
+        context.updateAdapter()
     }
 
     fun addFileToMy() {

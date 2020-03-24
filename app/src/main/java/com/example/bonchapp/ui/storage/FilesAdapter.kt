@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bonchapp.R
 import kotlinx.android.synthetic.main.item_file.view.*
 
-class FilesAdapter(val aContext: StorageFragment, var data: MutableList<String>): RecyclerView.Adapter<FilesAdapter.FilesHolder>() {
+class FilesAdapter(private val storageFragment: StorageFragment): RecyclerView.Adapter<FilesAdapter.FilesHolder>() {
 
     inner class FilesHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+
+    private val liveData = storageFragment.presenter.filesList.value
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilesHolder {
         val view = LayoutInflater.from(parent.context)
@@ -20,12 +22,13 @@ class FilesAdapter(val aContext: StorageFragment, var data: MutableList<String>)
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return liveData?.size ?: 1
     }
 
     override fun onBindViewHolder(holder: FilesHolder, position: Int) {
         holder.itemView.run {
-            item_file_title.text = data[position]
+            item_file_title.text = liveData!![position].author
+            item_file_author.text = liveData[position].author
             //TODO: fix presenter methods
             this.setOnLongClickListener { it ->
                 val popUp = PopupMenu(this.context!!, it)
@@ -33,23 +36,25 @@ class FilesAdapter(val aContext: StorageFragment, var data: MutableList<String>)
 
                 popUp.setOnMenuItemClickListener {
                     when (it.itemId) {
-                        R.id.add_to_my_files -> aContext.presenter.addFileToMy()
-                        R.id.delete_from_my_files -> aContext.presenter.deleteFileFromMy()
+                        R.id.add_to_my_files -> storageFragment.presenter.addFileToMy()
+                        R.id.delete_from_my_files -> {
+                            storageFragment.presenter.deleteFileFromMy()
+                            onItemDismiss(position)
+                        }
                     }
-
                     true
                 }
                 popUp.show()
                 true
             }
             item_file_download.setOnClickListener {
-                aContext.presenter.downloadFile()
+                storageFragment.presenter.downloadFile()
             }
         }
     }
 
-    fun onItemDismiss(position: Int) {
-        data.removeAt(position)
+    private fun onItemDismiss(position: Int) {
+        liveData!!.removeAt(position)
         notifyItemRemoved(position)
     }
 }
