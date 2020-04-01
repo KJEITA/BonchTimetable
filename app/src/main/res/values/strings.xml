@@ -4,18 +4,14 @@
     <string name="previous">Previous</string>
     <string name="navgut_loading_error">Произошла ошибка загрузки. Нажмите в любом месте, чтобы попробовать снова</string>
     <string name="reg_success">Registration Success</string>
-    <string name="title_activity_scrolling">ScrollingActivity</string>
-    <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="search_files">Поиск по автору или названию</string>
 
     <string-array name="Months">
         <item>ЯНВАРЬ</item>
         <item>ФЕВРАЛЬ</item>
         <item>МАРТ</item>
-
         <item>АПРЕЛЬ</item>
         <item>МАЙ</item>
         <item>ИЮНЬ</item>
@@ -26,7 +22,7 @@
         <item>НОЯБРЬ</item>
         <item>ДЕКАБРЬ</item>
     </string-array>
-    
+
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="action_settings">Settings</string>
     <string name="search_files">Поиск по автору или названию</string>
@@ -43,4 +39,11 @@
         <item>Библиотека СПбГУТ</item>
         <item>bonchfiles</item>
     </string-array>
+
+    <string name="my_files_not_found_title">Нет добавленных файлов.</string>
+    <string name="my_files_not_found">Чтобы пополнить хранилище, найдите необходимую литературу в других разделах и добавьте к себе.</string>
+    <string name="group_files_not_found_title">Пока что здесь ничего нет.</string>
+    <string name="group_files_not_found">Файлы, загруженные предподавателем или старостой, будут храниться здесь.</string>
+    <string name="file_search_not_results">По вашему запросу ничего не найдено.</string>
+
 </resources>

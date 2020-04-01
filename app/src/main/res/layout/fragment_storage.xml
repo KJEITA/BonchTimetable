@@ -181,4 +181,13 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.10" />
 
+    <include
+        android:id="@+id/no_files_view"
+        layout="@layout/storage_no_file_bg"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/files_search"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

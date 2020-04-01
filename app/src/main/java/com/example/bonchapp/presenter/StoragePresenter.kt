@@ -1,30 +1,45 @@
 package com.example.bonchapp.presenter
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.bonchapp.R
 import com.example.bonchapp.model.pojo.File
 import com.example.bonchapp.ui.storage.StorageFragment
-import kotlinx.android.synthetic.main.fragment_storage.view.*
 
-class StoragePresenter(val context: StorageFragment) {
+class StoragePresenter(val storageFragment: StorageFragment) {
 
-    private val testData = MutableLiveData<ArrayList<File>>()
+    val testData = MutableLiveData<ArrayList<File>>()
 
-    var filesList: LiveData<ArrayList<File>> = testData
+    var onMyFile: Boolean = true
 
     fun onCreate() {
         testData.value = arrayListOf()
+
+        if (testData.value!!.size == 0) {
+            storageFragment.onEmptyFileList()
+        }
     }
 
     fun onSpinnerSelectedItemUpdated(itemPosition: Int) {
         when (itemPosition) {
-            R.id.my_file_btn -> testData.value!!.clear()
-            R.id.group_file_btn -> testData.value = arrayListOf(File("Файл группы1", "Автор1"), File("Файл группы2", "Автор2"))
-            R.id.lib_file_btn -> testData.value = arrayListOf(File("Файл библиотека 1", "Автор"), File("Файл библиотека 3", "Автор2"))
-            R.id.bonch_file_btn -> testData.value = arrayListOf(File("bonchfile 1", "bonchfile 2"))
+            R.id.my_file_btn -> {
+                testData.value!!.clear()
+                onMyFile = true
+            }
+            R.id.group_file_btn -> {
+                testData.value = arrayListOf(File("Файл группы1", "Автор1"), File("Файл группы2", "Автор2"))
+                onMyFile = false
+            }
+            R.id.lib_file_btn -> {
+                testData.value = arrayListOf(File("Файл библиотека 1", "Автор"), File("Файл библиотека 3", "Автор2"))
+                onMyFile = false
+            }
+            R.id.bonch_file_btn -> {
+                testData.value = arrayListOf(File("bonchfile 1", "bonchfile 2"))
+                onMyFile = false
+            }
         }
-        context.updateAdapter()
+        if (testData.value!!.size != 0) storageFragment.onNonEmptyFileList()
+        storageFragment.updateAdapter()
     }
 
     fun addFileToMy() {

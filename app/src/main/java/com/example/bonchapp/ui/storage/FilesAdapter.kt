@@ -12,32 +12,34 @@ class FilesAdapter(private val storageFragment: StorageFragment): RecyclerView.A
 
     inner class FilesHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
-    private val liveData = storageFragment.presenter.filesList.value
+    private val liveData = storageFragment.presenter.testData
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilesHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_file, parent, false)
         return FilesHolder(view)
-
     }
 
     override fun getItemCount(): Int {
-        return liveData?.size ?: 1
+        return liveData.value?.size ?: 0
     }
 
     override fun onBindViewHolder(holder: FilesHolder, position: Int) {
         holder.itemView.run {
-            item_file_title.text = liveData!![position].author
-            item_file_author.text = liveData[position].author
+            item_file_title.text = liveData.value!![position].author
+            item_file_author.text = liveData.value!![position].author
             //TODO: fix presenter methods
             this.setOnLongClickListener { it ->
                 val popUp = PopupMenu(this.context!!, it)
-                popUp.inflate(R.menu.file_menu)
+                popUp.menu.add(0, 0, 0, resources.getString(R.string.add_to_my_files))
+                popUp.menu.add(0, 1, 0, resources.getString(R.string.delete_from_my_file))
 
                 popUp.setOnMenuItemClickListener {
                     when (it.itemId) {
-                        R.id.add_to_my_files -> storageFragment.presenter.addFileToMy()
-                        R.id.delete_from_my_files -> {
+                        0 -> {
+                            storageFragment.presenter.addFileToMy()
+                        }
+                        1 -> {
                             storageFragment.presenter.deleteFileFromMy()
                             onItemDismiss(position)
                         }
@@ -53,8 +55,22 @@ class FilesAdapter(private val storageFragment: StorageFragment): RecyclerView.A
         }
     }
 
+//    fun filter(text: String) {
+//        liveData.value!!.clear()
+//        if (text.isNotEmpty()) {
+//            itemsCopy!!.forEach {
+//                if (it.author.toLowerCase().contains(text) || it.title.toLowerCase().contains(text)) {
+//                    liveData.value!!.add(it)
+//                }
+//            }
+//        } else {
+//            liveData.value!!.addAll(itemsCopy!!)
+//        }
+//        notifyDataSetChanged()
+//    }
+
     private fun onItemDismiss(position: Int) {
-        liveData!!.removeAt(position)
+        liveData.value!!.removeAt(position)
         notifyItemRemoved(position)
     }
 }

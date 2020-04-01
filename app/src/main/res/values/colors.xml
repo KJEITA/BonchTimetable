@@ -12,4 +12,6 @@
     <color name="colorItemWhite">#FFFFFF</color>
     <color name="colorOrange">#FF8117</color>
     <color name="colorTextBlue">#1E67A2</color>
+
+    <color name="colorSecondaryTextDark">#666666</color>
  </resources>

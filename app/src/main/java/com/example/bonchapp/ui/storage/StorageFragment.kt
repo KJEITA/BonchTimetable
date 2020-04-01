@@ -2,21 +2,16 @@ package com.example.bonchapp.ui.storage
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bonchapp.R
 import com.example.bonchapp.presenter.StoragePresenter
-import kotlinx.android.synthetic.main.fragment_storage.*
 
 class StorageFragment : Fragment() {
 
@@ -37,6 +32,8 @@ class StorageFragment : Fragment() {
 
     lateinit var recyclerAdapter: FilesAdapter
 
+    private lateinit var noFileView: LinearLayout
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,7 +43,7 @@ class StorageFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_storage, container, false)
 
         initView(root)
-        setClickers()
+//      initSearch()
 
         return root
     }
@@ -57,6 +54,7 @@ class StorageFragment : Fragment() {
 
         presenter.onCreate()
         initRecycler()
+        setClickers()
     }
 
     fun initView(view: View) {
@@ -73,6 +71,8 @@ class StorageFragment : Fragment() {
         groupFileBtn = view.findViewById(R.id.group_file_btn)
         libFileBtn = view.findViewById(R.id.lib_file_btn)
         bonchFileBtn = view.findViewById(R.id.bonch_file_btn)
+
+        noFileView = view.findViewById(R.id.no_files_view)
     }
 
 
@@ -104,5 +104,30 @@ class StorageFragment : Fragment() {
         currentTypeFileTW.text = button.text
 
         filesDropdownList.visibility = View.GONE
+    }
+
+//    fun initSearch() {
+//        filesSearch.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                recyclerAdapter.filter(query!!.toLowerCase().trim())
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                recyclerAdapter.filter(newText!!.toLowerCase().trim())
+//                return true
+//            }
+//
+//        })
+//    }
+
+    fun onEmptyFileList() {
+        filesRecycler.visibility = View.GONE
+        noFileView.visibility = View.VISIBLE
+    }
+
+    fun onNonEmptyFileList() {
+        filesRecycler.visibility = View.VISIBLE
+        noFileView.visibility = View.GONE
     }
 }
