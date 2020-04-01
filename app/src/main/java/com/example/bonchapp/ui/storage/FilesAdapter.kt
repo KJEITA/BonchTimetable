@@ -1,5 +1,6 @@
 package com.example.bonchapp.ui.storage
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,16 +32,21 @@ class FilesAdapter(private val storageFragment: StorageFragment): RecyclerView.A
             //TODO: fix presenter methods
             this.setOnLongClickListener { it ->
                 val popUp = PopupMenu(this.context!!, it)
-                popUp.menu.add(0, 0, 0, resources.getString(R.string.add_to_my_files))
-                popUp.menu.add(0, 1, 0, resources.getString(R.string.delete_from_my_file))
+                if (storageFragment.presenter.currentTypeFile !== "My") {
+                    popUp.menu.add(0, 1, 0, resources.getString(R.string.delete_from_my_file))
+                } else {
+                    popUp.menu.add(0, 0, 0, resources.getString(R.string.add_to_my_files))
+                }
 
                 popUp.setOnMenuItemClickListener {
                     when (it.itemId) {
                         0 -> {
                             storageFragment.presenter.addFileToMy()
+                            Log.e("fefe", "i am here 0")
                         }
                         1 -> {
                             storageFragment.presenter.deleteFileFromMy()
+                            Log.e("fefe", "i am here 1")
                             onItemDismiss(position)
                         }
                     }

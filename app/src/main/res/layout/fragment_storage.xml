@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F3F5"
-    tools:context=".ui.storage.StorageFragment">
+    tools:context=".ui.storage.StorageFragment"
+    android:focusableInTouchMode="true">
 
     <LinearLayout
         android:id="@+id/files_spinner_background"
@@ -64,116 +65,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/files_search" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/file_spinner_drowdown_list"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:elevation="2dp"
-        app:cardCornerRadius="5dp"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/files_spinner_background"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.59">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="8dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/current_type_file"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto"
-                    android:textColor="@color/colorOrange"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    tools:text="Файлы группы" />
-
-                <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:rotation="180"
-                    android:src="@drawable/ic_more" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/my_file_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/btn_outline"
-                android:fontFamily="@font/roboto"
-                android:minHeight="0dp"
-                android:padding="5dp"
-                android:text="@string/my_file_btn_text"
-                android:textAllCaps="false"
-                android:textColor="@color/colorOrange"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                style="?android:attr/borderlessButtonStyle"/>
-
-            <Button
-                android:id="@+id/group_file_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/btn_outline"
-                android:fontFamily="@font/roboto"
-                android:minHeight="0dp"
-                android:padding="5dp"
-                android:text="@string/group_file_btn_text"
-                android:textAllCaps="false"
-                android:textColor="@color/colorOrange"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                style="?android:attr/borderlessButtonStyle" />
-
-            <Button
-                android:id="@+id/lib_file_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/btn_outline"
-                android:fontFamily="@font/roboto"
-                android:minHeight="0dp"
-                android:padding="5dp"
-                android:text="@string/lib_file_btn_text"
-                android:textAllCaps="false"
-                android:textColor="@color/colorOrange"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                style="?android:attr/borderlessButtonStyle"/>
-
-            <Button
-                android:id="@+id/bonch_file_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/btn_outline"
-                android:fontFamily="@font/roboto"
-                android:minHeight="0dp"
-                android:padding="5dp"
-                android:text="@string/bonch_file_btn_text"
-                android:textAllCaps="false"
-                android:textColor="@color/colorOrange"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                style="?android:attr/borderlessButtonStyle"/>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
@@ -189,5 +80,13 @@
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/files_search"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <include
+        android:id="@+id/file_spinner_dropdown_list"
+        layout="@layout/item_file_spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/files_spinner_background"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

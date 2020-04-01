@@ -9,7 +9,7 @@ class StoragePresenter(val storageFragment: StorageFragment) {
 
     val testData = MutableLiveData<ArrayList<File>>()
 
-    var onMyFile: Boolean = true
+    var currentTypeFile: String = "My"
 
     fun onCreate() {
         testData.value = arrayListOf()
@@ -23,22 +23,22 @@ class StoragePresenter(val storageFragment: StorageFragment) {
         when (itemPosition) {
             R.id.my_file_btn -> {
                 testData.value!!.clear()
-                onMyFile = true
+                currentTypeFile = "My"
             }
             R.id.group_file_btn -> {
                 testData.value = arrayListOf(File("Файл группы1", "Автор1"), File("Файл группы2", "Автор2"))
-                onMyFile = false
+                currentTypeFile = "Group"
             }
             R.id.lib_file_btn -> {
                 testData.value = arrayListOf(File("Файл библиотека 1", "Автор"), File("Файл библиотека 3", "Автор2"))
-                onMyFile = false
+                currentTypeFile = "Lib"
             }
             R.id.bonch_file_btn -> {
                 testData.value = arrayListOf(File("bonchfile 1", "bonchfile 2"))
-                onMyFile = false
+                currentTypeFile = "Bonchfiles"
             }
         }
-        if (testData.value!!.size != 0) storageFragment.onNonEmptyFileList()
+        if (testData.value!!.size != 0) storageFragment.onNonEmptyFileList() else storageFragment.onEmptyFileList()
         storageFragment.updateAdapter()
     }
 

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,8 +23,11 @@ class StorageFragment : Fragment() {
 
     private lateinit var filesSpinnerTitle: TextView
     private lateinit var filesSpinner: LinearLayout
-    private lateinit var filesDropdownList: CardView
+    private lateinit var filesDropdownList: ConstraintLayout
     private lateinit var currentTypeFileTW: TextView
+
+    private lateinit var noFileTitleTw: TextView
+    private lateinit var noFileDescrTw: TextView
 
     private lateinit var myFileBtn: Button
     private lateinit var groupFileBtn: Button
@@ -61,10 +65,13 @@ class StorageFragment : Fragment() {
         filesSpinner = view.findViewById(R.id.files_spinner)
         filesRecycler = view.findViewById(R.id.files_recycler)
         filesSearch = view.findViewById(R.id.files_search)
-        filesDropdownList = view.findViewById(R.id.file_spinner_drowdown_list)
+        filesDropdownList = view.findViewById(R.id.file_spinner_dropdown_list)
 
         filesSpinnerTitle = view.findViewById(R.id.file_spinner_title)
         currentTypeFileTW = view.findViewById(R.id.current_type_file)
+
+        noFileTitleTw = view.findViewById(R.id.no_file_title)
+        noFileDescrTw = view.findViewById(R.id.no_file_descr)
 
         //spinner buttons
         myFileBtn = view.findViewById(R.id.my_file_btn)
@@ -122,11 +129,25 @@ class StorageFragment : Fragment() {
 //    }
 
     fun onEmptyFileList() {
+        when (presenter.currentTypeFile) {
+            "My" -> {
+                noFileTitleTw.text = resources.getString(R.string.my_files_not_found_title)
+                noFileDescrTw.text = resources.getString(R.string.my_files_not_found)
+            }
+            "Group" -> {
+                noFileTitleTw.text = resources.getString(R.string.group_files_not_found_title)
+                noFileTitleTw.text = resources.getString(R.string.group_files_not_found)
+            }
+        }
+        noFileTitleTw.visibility = View.VISIBLE
+        noFileDescrTw.visibility = View.VISIBLE
         filesRecycler.visibility = View.GONE
         noFileView.visibility = View.VISIBLE
     }
 
     fun onNonEmptyFileList() {
+        noFileTitleTw.visibility = View.GONE
+        noFileDescrTw.visibility = View.GONE
         filesRecycler.visibility = View.VISIBLE
         noFileView.visibility = View.GONE
     }
