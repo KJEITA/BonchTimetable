@@ -1,12 +1,14 @@
 package com.example.bonchapp.presentation.presenter.auth
 
 import android.util.Log
+import android.view.View
 import com.example.bonchapp.domain.entities.Token
 import com.example.bonchapp.domain.interactors.auth.IAuthInteractor
 import com.example.bonchapp.presentation.ui.authorization.IAuthView
 import com.example.bonchapp.router.Constants
 import com.example.bonchapp.router.MainRouter
 import com.example.bonchapp.router.User
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class AuthPresenter @Inject constructor(val interactor: IAuthInteractor, val router: MainRouter): IAuthPresenter {

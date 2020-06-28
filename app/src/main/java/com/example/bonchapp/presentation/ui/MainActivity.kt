@@ -24,9 +24,11 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
+
     lateinit var preferences: SharedPreferences
     lateinit var locale: Locale
     lateinit var lang: String
+
 
     @Inject
     lateinit var router: MainRouter
@@ -47,13 +49,15 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(setOf(
             R.id.navigation_event,
             R.id.navigation_navgut,
-            R.id.timetableFragment,
-            R.id.navigation_messages,
+            R.id.navigation_timetable,
+            R.id.navigation_storage,
             R.id.navigation_profile
         ))
         navView.setupWithNavController(navController)
 
         updateConfiguration()
+
+
 
         val sharedPreferences = getSharedPreferences(Constants.APP_PREFERENCE, Context.MODE_PRIVATE)
         if(sharedPreferences.contains(Constants.TOKEN)) {
@@ -62,7 +66,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
@@ -85,4 +88,5 @@ class MainActivity : AppCompatActivity() {
         config.locale = locale
         baseContext.resources.updateConfiguration(config, null)
     }
+
 }

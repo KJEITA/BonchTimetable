@@ -4,7 +4,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.bonchapp.presentation.ui.profile.debt.ProfileDebtFragment
+<<<<<<< HEAD
 import com.example.bonchapp.presentation.ui.profile.electives.ProfileElectivesFragment
+=======
+import com.example.bonchapp.presentation.ui.profile.elective.ProfileElectivesFragment
+>>>>>>> timeTable
 import com.example.bonchapp.presentation.ui.profile.files.ProfileFileFragment
 import com.example.bonchapp.presentation.ui.profile.mark.ProfileMarkFragment
 

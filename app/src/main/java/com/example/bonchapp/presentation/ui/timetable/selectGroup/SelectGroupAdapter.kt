@@ -1,6 +1,5 @@
 package com.example.bonchapp.presentation.ui.timetable.selectGroup
 
-
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -17,8 +16,6 @@ class SelectGroupAdapter(val context: Context) :
     RecyclerView.Adapter<SelectGroupPostHolder>() {
 
     var subject = ArrayList<ArrayList<String>>()
-
-
 
     fun setGroups(groupList: List<ArrayList<String>>) {
         this.subject.clear()
@@ -59,19 +56,19 @@ class SelectGroupPostHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
 
         group = groupLGr[1]
         when {
-            groupLGr[0].equals("РТС") -> {
+            groupLGr[0] == "РТС" -> {
                 imageSrc.setImageResource(R.drawable.rts)
             }
-            groupLGr[0].equals("ИС и Т") -> {
+            groupLGr[0] == "ИС и Т" -> {
                 imageSrc.setImageResource(R.drawable.isit)
             }
-            groupLGr[0].equals("ИКСС") -> {
+            groupLGr[0] == "ИКСС" -> {
                 imageSrc.setImageResource(R.drawable.ikss_pushka)
             }
-            groupLGr[0].equals("ЦЭУБИ") -> {
+            groupLGr[0] == "ЦЭУБИ" -> {
                 imageSrc.setImageResource(R.drawable.ceubi)
             }
-            groupLGr[0].equals("ГФ") -> {
+            groupLGr[0] == "ГФ" -> {
                 imageSrc.setImageResource(R.drawable.gf)
             }
             else -> {
@@ -91,6 +88,8 @@ class SelectGroupPostHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
 
         itemView.setOnClickListener {
             presenter.switchName(group)
+            presenter.reloadPagers()
+            presenter.closeFragment()
         }
     }
 }

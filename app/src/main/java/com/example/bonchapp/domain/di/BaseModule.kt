@@ -13,6 +13,4 @@ class BaseModule {
     fun provideRouter(): MainRouter{
         return MainRouter()
     }
-
 }
-

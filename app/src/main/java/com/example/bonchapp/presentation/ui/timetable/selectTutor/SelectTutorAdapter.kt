@@ -1,5 +1,6 @@
 package com.example.bonchapp.presentation.ui.timetable.selectTutor
 
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,6 @@ import com.example.bonchapp.R
 import com.example.bonchapp.presentation.App
 import com.example.bonchapp.presentation.presenter.timetable.ITimetablePresenter
 import javax.inject.Inject
-
 
 class SelectTutorAdapter(val context: Context) :
     RecyclerView.Adapter<SelectTutorPostHolder>() {
@@ -65,6 +65,9 @@ class SelectTutorPostHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
 
         itemView.setOnClickListener {
             presenter.switchName(groupLGr)
+            //presenter.loadTimetable()
+            presenter.reloadPagers()
+            presenter.closeFragment()
         }
     }
 }

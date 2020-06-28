@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> timeTable
 package com.example.bonchapp.presentation.ui.profile.settings
 
 import com.example.bonchapp.R
@@ -16,10 +19,22 @@ class LogoutDialogFragment : DialogFragment() {
             AlertDialog.Builder(requireActivity())
         return builder
             .setTitle(getString(R.string.text_warningLogout))
+<<<<<<< HEAD
+=======
+<<<<<<<< HEAD:app/src/main/java/com/example/bonchapp/presentation/ui/profile/settings/LogoutDialogFragment.kt
+            .setMessage(getString(R.string.text_warningLogout2))
+            .setPositiveButton("Пофиг", null)
+            .setNegativeButton("Не пофиг", null)
+========
+>>>>>>> timeTable
             .setMessage("Вы будете отчислены")
             .setPositiveButton("Пофиг", null)
             .setNegativeButton("Не пофиг", null)
 
+<<<<<<< HEAD
+=======
+>>>>>>>> timeTable:app/src/main/java/com/example/bonchapp/presentation/ui/profile/LogoutDialogFragment.kt
+>>>>>>> timeTable
             .create()//.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(R.color.colorTextBlue);
         //return builder.setView(R.layout.fragment_logout_dialog).create()
     }

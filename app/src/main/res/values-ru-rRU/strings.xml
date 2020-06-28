@@ -5,6 +5,10 @@
     <string name="btn_logout">Выйти</string>
     <string name="text_language">Языки</string>
     <string name="text_warningLogout">Вы действительно хотите покинуть личный кабинет?</string>
+<<<<<<< HEAD
+=======
+    <string name="text_warningLogout2">Данные для входа будут удалены.</string>
+>>>>>>> timeTable
     <string name="text_profile_mark">На данный момент в зачетной книжке нет записей</string>
     <string name="text_profile_file">На данный момент файлов для вас нет.</string>
     <string name="text_profile_electives">На данный момент у вас нет факультативов.</string>
@@ -13,4 +17,8 @@
     <string name="text_profile_tab_record">Зачетка</string>
     <string name="text_profile_tab_groupFiles">Файлы группы</string>
     <string name="text_profile_tab_electives">Факультативы</string>
+<<<<<<< HEAD
 </resources>
+=======
+</resources>
+>>>>>>> timeTable

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">BonchApp</string>
+    <string name="app_name">BonchApp</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="navgut_loading_error">Произошла ошибка загрузки. Нажмите в любом месте, чтобы попробовать снова</string>
@@ -140,6 +140,7 @@
     <string name="btn_logout">Logout</string>
     <string name="text_language">Language</string>
     <string name="text_warningLogout">Do you really want to leave your account?</string>
+    <string name="text_warningLogout2">Login information will be deleted.</string>
     <string name="text_profile_mark">There are currently no entries in the Gradebook.</string>
     <string name="text_profile_file">There are currently no files for you.</string>
     <string name="text_profile_electives">You currently have no electives.</string>
@@ -148,4 +149,5 @@
     <string name="text_profile_tab_record">Record</string>
     <string name="text_profile_tab_groupFiles">Group files</string>
     <string name="text_profile_tab_electives">Electives</string>
+
 </resources>

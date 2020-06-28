@@ -34,4 +34,8 @@
         tools:listitem="@layout/item_profile_element_debt"
         tools:itemCount="5"/>
 
+<<<<<<< HEAD
 </androidx.constraintlayout.widget.ConstraintLayout>
+=======
+</androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> timeTable

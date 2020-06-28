@@ -11,6 +11,7 @@ import retrofit2.http.POST
 
 interface NetworkService {
 
+
     // EVENTS
     @GET("/api/timetable/group")
     fun getGroups(@Header("Authorization") token: String = "Token ${User.token.value}"
@@ -20,7 +21,6 @@ interface NetworkService {
     fun getEvents(@Header("Authorization") token: String = "Token ${User.token.value}"
     ): Call<List<Event>>
 
-
     @GET("/api/timetable/group")
     fun getNews(@Header("Authorization") token: String = "Token ${User.token.value}"
     ): Call<ArrayList<ArrayList<String>>>
@@ -28,19 +28,20 @@ interface NetworkService {
 
     //TimeTable
     //@FormUrlEncoded
-    @POST("/api/timetable/")
+    @POST("/api/timetable")
     fun getTimeTable(
         //@Header("Accept") accept: String = "application/json",
         @Header("Authorization") token: String = "Token ${User.token.value}",
         @Body body: RequestTimeTable?
-	): Call<ArrayList<SubjectDTO>>
-
+    ): Call<ArrayList<SubjectDTO>>
 
     @GET("/api/timetable/tutor/long")
     fun getTutors(
-		@Header("Authorization") token: String = "Token ${User.token.value}"
+        @Header("Authorization") token: String = "Token ${User.token.value}"
     ): Call<ArrayList<String>>
 
+
+    //Auth
     @POST("/api/login")
     fun getToken(
         @Header("Accept") accept: String = "application/json",
@@ -60,26 +61,22 @@ interface NetworkService {
 
     @GET("/api/user/account")
     fun getUserInfo(
-        //@Header("Authorization") token: String = "Token ${User.token.value}"
         @Header("Authorization") token: String = "Token ${User.token.value}"
     ): Call<AccountDTO>
 
     @GET("/api/user/debt")
     fun getDebt(
-        //@Header("Authorization") token: String = "Token ${User.token.value}"
         @Header("Authorization") token: String = "Token ${User.token.value}"
     ): Call<ArrayList<DebtDTO>>
 
     @GET("/api/user/history")
     fun getHistoryElectives(
-        //@Header("Authorization") token: String = "Token ${User.token.value}"
         @Header("Authorization") token: String = "Token ${User.token.value}"
     ): Call<ArrayList<ElectiveDTO>>
 
     @GET("/api/user/mark")
     fun getMark(
-        //@Header("Authorization") token: String = "Token ${User.token.value}"
         @Header("Authorization") token: String = "Token ${User.token.value}"
     ): Call<ArrayList<MarkDTO>>
-}
 
+}

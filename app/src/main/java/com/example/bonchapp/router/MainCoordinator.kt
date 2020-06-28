@@ -61,9 +61,9 @@ object MainCoordinator {
         context.findNavController().navigate(R.id.action_timetableFragment_to_selectGroupFragment)
     }
 
-    fun navigateToSelectTypeTimetable(context: Fragment){
+    fun navigateToSelectTypeTimetable(context: Fragment, b: Boolean){
         context.requireActivity().supportFragmentManager.beginTransaction().add(
-            R.id.nav_host_fragment,
+
             SelectTypeTimetableFragment(), null
         ).addToBackStack(null).commit()
     }

@@ -35,8 +35,8 @@ android {
 
 dependencies {
 
-
     implementation 'com.google.dagger:dagger:2.27'
+    implementation 'org.jetbrains:annotations:15.0'
     kapt 'com.google.dagger:dagger-compiler:2.27'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -57,10 +57,13 @@ dependencies {
 
     implementation 'com.github.kizitonwose:CalendarView:0.3.4'
 
-
     implementation 'com.github.prolificinteractive:material-calendarview:2.0.0'
 
-    implementation 'com.github.shrikanth7698:Collapsible-Calendar-View-Android:v1.0.3'
+    //implementation 'com.github.shrikanth7698:Collapsible-Calendar-View-Android:v1.0.3'
+
+//    implementation ('com.wefika:collapse-calendar-view:0.1.0'){
+//        exclude group: 'org.jetbrains', module: 'annotations'
+//    }
 
     implementation 'joda-time:joda-time:2.10.5'
 
@@ -71,7 +74,4 @@ dependencies {
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
 
     implementation "androidx.viewpager2:viewpager2:1.0.0"
-
-
 }
-

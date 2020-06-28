@@ -37,7 +37,11 @@ class ProfileElectivesFragment : Fragment(),
     }
 
     init {
+<<<<<<< HEAD
         //App.appComponent.inject(this)
+=======
+        App.appComponent.inject(this)
+>>>>>>> timeTable
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

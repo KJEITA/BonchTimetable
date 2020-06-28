@@ -1,20 +1,20 @@
 package com.example.bonchapp.presentation.ui.timetable.selectTutor
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageButton
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bonchapp.R
-
 import com.example.bonchapp.presentation.App
 import com.example.bonchapp.presentation.presenter.timetable.ITimetableTutorPresenter
 import javax.inject.Inject
-
 
 
 class SelectTutorFragment() : Fragment(), ITimetableTutorView {
@@ -56,8 +56,7 @@ class SelectTutorFragment() : Fragment(), ITimetableTutorView {
     }
 
     private fun initRecyclerView(root: View) {
-        tutorListAdapter =
-            SelectTutorAdapter(root.context)
+        tutorListAdapter = SelectTutorAdapter(root.context)
         val recyclerView = root.findViewById<RecyclerView>(R.id.rv_selectGroup)
         recyclerView.layoutManager = LinearLayoutManager(root.context)
         recyclerView.adapter = tutorListAdapter
@@ -109,5 +108,17 @@ class SelectTutorFragment() : Fragment(), ITimetableTutorView {
     override fun setList(list: ArrayList<String>){
         arrSubjects = list
         tutorListAdapter.setGroups(arrSubjects)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        hideKeyboard()
+    }
+
+    private fun hideKeyboard() {
+        val context: Context = requireContext().applicationContext
+        val imm =
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(root.windowToken, 0)
     }
 }

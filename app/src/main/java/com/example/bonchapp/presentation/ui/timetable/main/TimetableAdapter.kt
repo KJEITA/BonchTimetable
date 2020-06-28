@@ -1,6 +1,5 @@
 package com.example.bonchapp.presentation.ui.timetable.main
 
-
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -14,29 +13,19 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bonchapp.R
-import com.example.bonchapp.router.MainRouter
-import com.example.bonchapp.pojo.SubjectDTO
-import org.joda.time.DateTime
-
 //import com.example.bonchapp.coordinator.MainCoordinator
+import com.example.bonchapp.pojo.SubjectDTO
+import com.example.bonchapp.presentation.App
+import com.example.bonchapp.presentation.di.AppComponent
+import com.example.bonchapp.presentation.presenter.timetable.ITimetablePresenter
+import com.example.bonchapp.router.MainRouter
+import org.joda.time.DateTime
+import javax.inject.Inject
 
 class TimetableAdapter(val context: Context, fragment: Fragment, val subject: List<SubjectDTO>, val date: String) :
     RecyclerView.Adapter<TimetablePostHolder>() {
 
-    //var subject = ArrayList<SubjectDTO>()
-
     val fragment = fragment
-
-    //lateinit var date: String
-
-    /*fun setSubjects(subjectList: List<SubjectDTO>, date: String) {
-        this.subject.clear()
-        this.subject.addAll(subjectList)
-
-        this.date = date
-
-        notifyDataSetChanged()
-    }*/
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimetablePostHolder {
         return TimetablePostHolder(
@@ -62,7 +51,14 @@ class TimetablePostHolder(itemView: View, fragment: Fragment) : RecyclerView.Vie
 
     val imageGradient = itemView.findViewById<ImageView>(R.id.gradient_timetable)
 
+    @Inject
+    lateinit var presenter: ITimetablePresenter
+
     val fragment = fragment
+
+    init {
+        App.appComponent.inject(this)
+    }
 
     fun bind(subject: SubjectDTO, number: Int, date: String) {
         textTime.text = subject.time
@@ -80,9 +76,7 @@ class TimetablePostHolder(itemView: View, fragment: Fragment) : RecyclerView.Vie
             textCabinet.setText("")
 
         textCabinet.setOnClickListener {
-            //MainRouter.showCabinetInNavigator(fragment, stringer(subject.place))
-            TODO("Подключить навигатор")
-            MainRouter().navigateToCabinet(stringer(subject.place))
+            presenter.navigateToCabinet(stringer(subject.place))
         }
     }
 
@@ -177,18 +171,6 @@ class TimetablePostHolder(itemView: View, fragment: Fragment) : RecyclerView.Vie
     }
 
     private fun checkActiveSubject(date: String, time: String): Boolean {
-//<<<<<<< HEAD:app/src/main/java/com/example/bonchapp/presentation/ui/adapters/TimetableAdapter.kt
-//        if (date.equals(DateTimeFormat.forPattern("dd-MM-yyyy").print(DateTime()))) {
-//
-//            val s1 = time.substring(0, 5)
-//            val s2 = time.substring(6, 10)
-//
-//            val ss1 = date.substring(6, 10)
-//            val ss2 = date.substring(3, 5)
-//            val ss3 = date.substring(0, 2)
-//            val ss4 = s1.substring(0, 2)
-//            val ss5 = s1.substring(2, 4)
-//=======
         //if (date.equals(DateTimeFormat.forPattern("dd-MM-yyyy").print(DateTime()))) {
         try {
             var s1 = time.substring(0, 5)
@@ -203,15 +185,15 @@ class TimetablePostHolder(itemView: View, fragment: Fragment) : RecyclerView.Vie
                 date.substring(6, 10).toInt(),
                 date.substring(3, 5).toInt(),
                 date.substring(0, 2).toInt(),
-                s1.substring(0, 1).toInt(),
-                s1.substring(3, 4).toInt()
+                s1.substring(0, 2).toInt(),
+                s1.substring(3, 5).toInt()
             )
             val dt2 = DateTime(
                 date.substring(6, 10).toInt(),
                 date.substring(3, 5).toInt(),
                 date.substring(0, 2).toInt(),
-                s2.substring(0, 1).toInt(),
-                s2.substring(3, 4).toInt()
+                s2.substring(0, 2).toInt(),
+                s2.substring(3, 5).toInt()
             )
 
             if (DateTime.now() > dt1 && DateTime.now() < dt2)
@@ -222,7 +204,5 @@ class TimetablePostHolder(itemView: View, fragment: Fragment) : RecyclerView.Vie
         } finally {
             return true
         }
-        //} else
-        //  return true
     }
 }
